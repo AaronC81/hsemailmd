@@ -1,7 +1,8 @@
 require 'rainbow/refinement'
 using Rainbow
 require 'json'
-require 'open-uri'
+require 'uri'
+require 'net/http'
 
 module LambdaTool
   module CLI
@@ -34,7 +35,8 @@ module LambdaTool
           puts "Finding events for the week of #{date}..."
           date_obj = parse_date(date)
 
-          events = JSON.parse(open("https://api.hacksoc.org/calendar/events/#{date_obj.year}/#{date_obj.month}").read)
+          uri = URI("https://api.hacksoc.org/calendar/events/#{date_obj.year}/#{date_obj.month}")
+          events = JSON.parse(Net::HTTP.get_response(uri).body)
           events_this_week = []
           events.each do |event|
             event_date_obj = parse_date(event['when_human']['short_start_date'])
