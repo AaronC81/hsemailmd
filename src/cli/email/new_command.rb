@@ -4,6 +4,10 @@ require 'json'
 require 'uri'
 require 'net/http'
 
+# Certificate for api.hacksoc.org appears to have expired - disable SSL verification
+require 'openssl'
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
 module LambdaTool
   module CLI
     module Email
