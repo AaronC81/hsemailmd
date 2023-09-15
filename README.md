@@ -71,29 +71,35 @@ If you're using `lambdatool talk-ad json`, the following format is expected:
 
 ## Usage
 
-There are a variety of commands you can use:
+First, fetch all of Lambadtool's dependencies with:
+
+```
+bundle install
+```
+
+After that, there are a variety of commands you can use:
 
 ```bash
 # See all available commands
-hse
+bundle exec lambdatool
 
 # Create a new email
-lambdatool email new week3
+bundle exec lambdatool email new week3
 
 # Build a specific email to HTML
-lambdatool email build 2020-01-20-week3
+bundle exec lambdatool email build 2020-01-20-week3
 
 # Build the latest email to HTML
-lambdatool email build latest
+bundle exec lambdatool email build latest
 
 # Build the latest email and open it in a Firefox
-lambdatool email open latest
+bundle exec lambdatool email open latest
 
 # Check the latest email for spelling mistakes or URLs which aren't hyperlinked
-lambdatool email lint latest
+bundle exec lambdatool email lint latest
 
 # Generate an HTML talk advert
-echo "{ some json }" | lambdatool talk-ad json
+echo "{ some json }" | bundle exec lambdatool talk-ad json
 ```
 
 Created emails will be named `(intended send date)-(name).(md|html)`. Created
