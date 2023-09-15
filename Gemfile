@@ -1,5 +1,6 @@
 source :rubygems
 
+gem 'rainbow'
 gem 'redcarpet'
 gem "icalendar", "~> 2.5"
 
